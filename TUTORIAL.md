@@ -173,22 +173,23 @@ npm start
   <img src="https://i.imgur.com/t5TawDQ.png">
 </div>
 
-Success🎉 Our table renders correctly however it is clear that it could benefit from some styling. Let's make that happen then! 
+#### Success🎉 Our table renders correctly however it is clear that it could benefit from some styling. Let's make that happen then! 
 
 
-We will be using [Tailwindcss](https://tailwindcss.com/) for styling our report. Add the following additional dependencies to your project:
+## Styling the report
+#### We will be using [Tailwindcss](https://tailwindcss.com/) for styling our report. Add the following additional dependencies to your project:
 
 ```bash
 npm install --save-dev postcss-loader
 npm install tailwindcss
 ```
 
-In order to use [Tailwindcss](https://tailwindcss.com/), we need to modify the *webpack.config.js* file by including the *'postcss-loader'* option, as indicated by the red arrow in the picture below:
+#### In order to use [Tailwindcss](https://tailwindcss.com/), we need to modify the *webpack.config.js* file by including the *'postcss-loader'* option, as indicated by the red arrow in the picture below:
 <div style="display:flex; justify-content:center;">
 <img src="https://i.imgur.com/0Pf9Dly.png">
 </div>
 
-Next we create a *postcss.config.js* file in the *src* folder, with the following content:
+#### Next we create a *postcss.config.js* file in the *src* folder, with the following content:
 ```javascript
 module.exports = {
   plugins: [
@@ -198,14 +199,14 @@ module.exports = {
 }
 ```
 
-Additionally we create an *tailwind.css* file in the assets folder with the following content:
+#### Additionally we create an *tailwind.css* file in the assets folder with the following content:
 ```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
 
-Finally we import the *tailwind.css* file into our *index.js* file at the top, as follows:
+#### Finally we import the *tailwind.css* file into our *index.js* file at the top, as follows:
 ```javascript
 import 'alpinejs'
 import '@leanix/reporting'
@@ -213,14 +214,14 @@ import './assets/tailwind.css'
 ...
 ```
 
-Our project folder should look now like this:
+#### Our project folder should look now like this:
 <div style="display:flex; justify-content:center;">
 <img src="https://i.imgur.com/n9Z1zvY.png">
 </div>
 
 
 
-We edit again the *index.html* file and add some tailwind classes to our table elements:
+#### We edit again the *index.html* file and add some tailwind classes to our table elements:
 ```html
 ...
 <body x-data="init()" x-init="initializeReport()">
@@ -251,21 +252,23 @@ We edit again the *index.html* file and add some tailwind classes to our table e
 ...
 ```
 
-The output of our report looks now much better, doesn't it?
+#### The output of our report looks now much better, doesn't it?
 <div style="display:flex; justify-content:center;">
 <img src="https://i.imgur.com/zXNnIvd.png">
 </div>
 
-However, our report is not yet complete, as it still misses the *"export to excel feature"*. It is worth of noticing that altough the *leanix-reporting* framework provides an *out-of-the-box export to excel feature*, we will be using a custom solution for it since our table displays a couple of locally computed columns - *tag count* and *tags*.
+
+## Implementing the "*Export to Excel*" feature
+#### Our report is not yet complete, as it still misses the *"export to excel feature"*. It is worth of noticing that altough the *leanix-reporting* framework provides an *out-of-the-box export to excel feature*, we will be using a custom solution for it since our table displays a couple of locally computed columns - *tag count* and *tags*.
 
 
-For that, we will use [ExcelJS](https://github.com/exceljs/exceljs) by adding the following additional dependencies to our project:
+#### For that, we will use [ExcelJS](https://github.com/exceljs/exceljs) by adding the following additional dependencies to our project:
 
 ```bash
 npm install exceljs file-saver
 ```
 
-In the *index.js* file, import the *exceljs* and the *file-saver* libraries and add the *exportToXLSX* method as follows:
+#### In the *index.js* file, import the *exceljs* and the *file-saver* libraries and add the *exportToXLSX* method as follows:
 ```javascript
 import 'alpinejs'
 import '@leanix/reporting'
@@ -294,7 +297,7 @@ const methods = {
 }
 ```
 
-We still need a button in our custom report user-interface to trigger the *exportToXLSX* method. We implement it by editing the *index.html*:
+#### We still need a button in our custom report user-interface to trigger the *exportToXLSX* method. We implement it by editing the *index.html*:
 
 ```html
 <body x-data="init()" x-init="initializeReport()">
@@ -317,12 +320,12 @@ We still need a button in our custom report user-interface to trigger the *expor
 </body>
 ```
 
-Launching again our development server, we get our table and our export button, as expected:
+#### Launching again our development server, we get our table and our export button, as expected:
 <div style="display:flex; justify-content:center">
 <img src="https://i.imgur.com/mZtLVeb.png">
 </div>
 
-We quickly realize when exporting the dataset that the exported document doesn't look that great. Altough the styling of the excel document falls out of scope of the current tutorial, we can improve it significantly by simply specifying the width of each exported column in our *index.js* file as follows:
+#### We quickly realize when exporting the dataset that the exported document doesn't look that great. Altough the styling of the excel document falls out of scope of the current tutorial, we can improve it significantly by simply specifying the width of each exported column in our *index.js* file as follows:
 
 ```javascript
 ...
@@ -355,9 +358,9 @@ const state = {
 ...
 ```
 
-And that's it! Your custom report is now ready to be uploaded to your workspace with the following command:
+#### And that's it! Your custom report is now ready to be uploaded to your workspace with the following command:
 ```bash
 npm run upload
 ```
 
-Congratulations!
+#### Congratulations on completing your custom table report!
