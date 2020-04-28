@@ -4,9 +4,7 @@ Custom reports are a great way for analysing and communicating Enterprise Archit
 
 In this step-by-step tutorial we create a simple [LeanIX](https://www.leanix.net/en/) custom report, from scratch, that displays a table of Applications with the corresponding tag count and tag names, and exports it as an Excel file, as in the picture below:
 
-<div style="display:flex; justify-content:center">
 <img src="https://i.imgur.com/mZtLVeb.png">
-</div>
 
 The complete source-code for this project can be found [here](https://github.com/pauloramires/leanix-reporting-table-tutorial).
 
@@ -15,13 +13,14 @@ The complete source-code for this project can be found [here](https://github.com
 
   
 ## Getting started
-Install the [leanix-reporting-cli](https://github.com/leanix/leanix-reporting-cli) globally via npm:
+
+#### Install the [leanix-reporting-cli](https://github.com/leanix/leanix-reporting-cli) globally via npm:
 
 ```bash
 npm install -g @leanix/reporting-cli
 ```
 
-Initialize a new project:
+#### Initialize a new project:
 ```bash
 mkdir table-report-tutorial
 cd table-report-tutorial
@@ -29,37 +28,33 @@ lxr init
 npm install
 ```
 
-Configure your environment by editing the *lxr.json* file, if required:
+#### Configure your environment by editing the *lxr.json* file, if required:
 ```json
 {
   "host": "app.leanix.net",
   "apitoken": "Jw8MfCqEXDDubry64H95SYYPjJTBKNFhkYD8kSCL"
 }
 ```
-After this procedure, you should end up with the following project structure:
-<div style="display:flex; justify-content:center">
+#### After this procedure, you should end up with the following project structure:
 <img src="https://i.imgur.com/kJTFgZM.png">
-</div>
 
-We start by cleaning up our project folder, deleting the unnecessary files:
+#### We start by cleaning up our project folder, deleting the unnecessary files:
 - *src/report.js*
 - *src/fact-sheet-mapper.js*
 - *src/assets/bar.css*
 - *src/assets/main.css*
   
-Your project folder should look now like this:
-<div style="display:flex; justify-content:center">
-  <img src="https://i.imgur.com/h3RprP7.png">
-</div>
+#### Your project folder should look now like this:
+<img src="https://i.imgur.com/h3RprP7.png">
 
-We will be using [Alpine.js](https://github.com/alpinejs/alpine). Add the following additional dependencies to your project:
+#### We will be using [Alpine.js](https://github.com/alpinejs/alpine). Add the following additional dependencies to your project:
 
 ```bash
 npm install alpinejs
 ```
 
 
-We edit the *index.js* file as follows:
+#### We edit the *index.js* file as follows:
 ```javascript
 import 'alpinejs'
 import '@leanix/reporting'
@@ -130,7 +125,7 @@ window.init = () => {
 
 ```
 
-We edit the *index.html* file as follows:
+#### We edit the *index.html* file as follows:
 ```html
 <!doctype html>
 <html>
@@ -168,12 +163,12 @@ We edit the *index.html* file as follows:
 </html>
 ```
 
-After modifying the *index.html* and *index.js* files, launch the development server by using the following command:
+#### After modifying the *index.html* and *index.js* files, launch the development server by using the following command:
 ```bash
 npm start
 ```
 
-You should get an output similar to the picture below.
+#### You should get an output similar to the picture below.
 <div style="display:flex; justify-content:center">
   <img src="https://i.imgur.com/t5TawDQ.png">
 </div>
