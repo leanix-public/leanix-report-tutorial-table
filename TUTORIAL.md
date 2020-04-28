@@ -6,7 +6,7 @@ In this step-by-step tutorial we create a simple [LeanIX](https://www.leanix.net
 
 <img src="https://i.imgur.com/mZtLVeb.png">
 
-The complete source-code for this project can be found [here](https://github.com/pauloramires/leanix-reporting-table-tutorial).
+The complete source-code for this project can be found [here](https://gitlab.com/leanix-store/LeanIX-GmbH/table-report-tutorial).
 
 ## Pre-requisites
 * [NodeJS LTS](https://nodejs.org/en/) installed in your computer.
@@ -47,14 +47,14 @@ npm install
 #### Your project folder should look now like this:
 <img src="https://i.imgur.com/h3RprP7.png">
 
-#### We will be using [Alpine.js](https://github.com/alpinejs/alpine). Add the following additional dependencies to your project:
+#### For this project we will be using [Alpine.js](https://github.com/alpinejs/alpine), a lightweight framework which allows us to embed Javascript directly in our HTML code. For that, we start by adding the following dependencies to our project:
 
 ```bash
 npm install alpinejs
 ```
 
 
-#### We edit the *index.js* file as follows:
+#### We edit the *index.js* file in order to import the *AlpineJS* dependency and to declare globally a *init* method which provides a context of state and methods to be used by our report:
 ```javascript
 import 'alpinejs'
 import '@leanix/reporting'
@@ -125,7 +125,7 @@ window.init = () => {
 
 ```
 
-#### We edit the *index.html* file as follows:
+#### We edit the *index.html* file as follows. Notice the *init* method, called by the [x-data](https://github.com/alpinejs/alpine#x-data) AlpineJS directive of the *body* element, which first initializes the context for our report. After the context is set, the [x-init](https://github.com/alpinejs/alpine#x-init) AlpineJS directive, also of the *body* element, triggers the *initializeReport* method:
 ```html
 <!doctype html>
 <html>
@@ -168,16 +168,16 @@ window.init = () => {
 npm start
 ```
 
-#### You should get an output similar to the picture below.
-<div style="display:flex; justify-content:center">
-  <img src="https://i.imgur.com/t5TawDQ.png">
-</div>
+**Notice:** please take into consideration the [Security Hint paragraph](https://dev.leanix.net/docs/build-a-custom-report#section-security-hint) and [these documentation notes](https://fazendadosoftware.github.io/vue-cli-plugin-leanix/guide/step-by-step.html#add-a-browser-security-exception-for-the-self-signed-certificate) for dealing with the security warnings when launching the development server for the first time.
 
-#### Success🎉 Our table renders correctly however it is clear that it could benefit from some styling. Let's make that happen then! 
+#### After the development server launches, you should get an output similar to the picture below.
+<img src="https://i.imgur.com/t5TawDQ.png">
+
+#### Success, our table renders correctly! However it is clear that it could benefit from some styling. Let's make that happen! 
 
 
 ## Styling the report
-#### We will be using [Tailwindcss](https://tailwindcss.com/) for styling our report. Add the following additional dependencies to your project:
+#### We will be using [Tailwindcss](https://tailwindcss.com/) for styling our report. Tailwindcss is a low-level CSS framework that provides a set of utility classes that can be included directly into our HTML code. The additional dependencies should be added through the following commands:
 
 ```bash
 npm install --save-dev postcss-loader
@@ -259,7 +259,7 @@ import './assets/tailwind.css'
 
 
 ## Implementing the "*Export to Excel*" feature
-#### Our report is not yet complete, as it still misses the *"export to excel feature"*. It is worth of noticing that altough the *leanix-reporting* framework provides an *out-of-the-box export to excel feature*, we will be using a custom solution for it since our table displays a couple of locally computed columns - *tag count* and *tags*.
+#### Our report is not yet complete, as it still misses the *"export to excel feature"*. It is worth noticing that altough the *leanix-reporting* framework provides an *out-of-the-box export to excel feature*, we will be using a custom solution for it since our table displays a couple of locally computed columns - *tag count* and *tags*.
 
 
 #### For that, we will use [ExcelJS](https://github.com/exceljs/exceljs) by adding the following additional dependencies to our project:
@@ -297,7 +297,7 @@ const methods = {
 }
 ```
 
-#### We still need a button in our custom report user-interface to trigger the *exportToXLSX* method. We implement it by editing the *index.html*:
+#### We also need a button in our custom report user-interface to trigger the *exportToXLSX* method. We implement it by editing the *index.html*:
 
 ```html
 <body x-data="init()" x-init="initializeReport()">
@@ -325,7 +325,7 @@ const methods = {
 <img src="https://i.imgur.com/mZtLVeb.png">
 </div>
 
-#### We quickly realize when exporting the dataset that the exported document doesn't look that great. Altough the styling of the excel document falls out of scope of the current tutorial, we can improve it significantly by simply specifying the width of each exported column in our *index.js* file as follows:
+#### We quickly realize when exporting the dataset that the exported document doesn't look that great. Altough the styling of the excel document falls out of the scope for this tutorial, we can improve it significantly by simply specifying the width of each exported column in our *index.js* file as follows:
 
 ```javascript
 ...
