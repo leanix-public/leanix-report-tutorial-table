@@ -4,7 +4,7 @@ Custom reports are a great way for analysing and communicating Enterprise Archit
 
 In this step-by-step tutorial we create a simple [LeanIX](https://www.leanix.net/en/) custom report, from scratch, that displays a table of Applications with the corresponding tag count and tag names, and exports it as an Excel file, as in the picture below:
 
-<img src="https://i.imgur.com/mZtLVeb.png">
+<img src="https://i.imgur.com/XAkzWvd.png">
 
 The complete source-code for this project can be found [here](https://gitlab.com/leanix-store/LeanIX-GmbH/table-report-tutorial).
 
@@ -321,9 +321,7 @@ const methods = {
 ```
 
 #### Launching again our development server, we get our table and our export button, as expected:
-<div style="display:flex; justify-content:center">
-<img src="https://i.imgur.com/mZtLVeb.png">
-</div>
+<img src="https://i.imgur.com/XAkzWvd.png">
 
 #### We quickly realize when exporting the dataset that the exported document doesn't look that great. Altough the styling of the excel document falls out of the scope for this tutorial, we can improve it significantly by simply specifying the width of each exported column in our *index.js* file as follows:
 
