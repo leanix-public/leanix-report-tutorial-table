@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="application-name" content="table-report-tutorial">
+  <meta name="description" content="%description%">
+  <meta name="author" content="%author%">
+
+  <title>%title%</title>
+
+</head>
+<body x-data="init()" x-init="initializeReport()">
+  <div class="container mx-auto h-screen">
+    <div class="flex justify-between items-center py-4">
+      <span class="text-sm italic" x-text="'Listing ' + applications.length + ' Applications'"></span>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-1 px-2 rounded"
+        @click="exportToXLSX(columns, applications)">
+        Export to XLSX
+      </button>
+    </div>
+    <table class="table-auto w-full text-center text-xs">
+      <thead class="bg-black text-white sticky top-0">
+        <tr>
+          <template x-for="column in columns">
+            <th class="px-4 py-2" x-text="column.header"></th>
+          </template>
+        </tr>
+      </thead>
+      <tbody>
+        <template x-for="application in applications">
+          <tr class="hover:bg-gray-100 transition-color duration-150 ease-in-out">
+            <template x-for="column in columns">
+              <td class="border px-4 py-2" x-text="application[column.key]">
+              </td>
+            </template>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
